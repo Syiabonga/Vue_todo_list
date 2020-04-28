@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Todos v-bind:todos="todos"/>
+    <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo"/>
   </div>
 </template>
 
@@ -30,6 +30,12 @@ export default {
         completed: false,
       }
     ]
+    }
+  },
+  methods:{
+    //Filter all the item that have a id different than the one passed in the parameters
+    deleteTodo(id){
+      this.todos = this.todos.filter(todo => todo.id !== id);
     }
   }
 }

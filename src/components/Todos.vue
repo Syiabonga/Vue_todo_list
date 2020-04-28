@@ -1,12 +1,20 @@
 <template>
     <div>
-        <h1>Todos</h1>
+        <div v-for="todo in todos" v-bind:key="todo.id">
+            <TodoItem v-bind:todo="todo"/>
+        </div>
     </div>
 </template>
 
 <script>
+import TodoItem from './TodoItem.vue'
+
 export default {
-    name: "Todos"
+    name: "Todos",
+    props: ["todos"],
+    components: {
+        TodoItem,
+    }
 }
 </script>
 

@@ -1,5 +1,7 @@
 <template>
-    <div class="todo-item">
+    <!-- If item item is completed them put a line through it -->
+     <div class="todo-item" v-bind:class="{'is-complete':todo.completed}">
+         <input type="checkbox" v-on:change="markComplete">
         <p>{{todo.title}}</p>
     </div>
 </template>
@@ -7,7 +9,13 @@
 <script>
 export default {
     name: 'TodoItem',
-    props:["todo"]
+    props:["todo"],
+    methods: {
+        //Change the state of a item by clicking the checkbox to complete if not and vice-versa
+        markComplete(){
+            this.todo.completed = !this.todo.completed;
+        }
+    }
 }
 </script>
 
